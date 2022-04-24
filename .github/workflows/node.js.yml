@@ -17,12 +17,11 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: 14.18.2
-        cache: 'npm'
-      run: |
-        npm install
-        npm run build 
-        zip -r build-artifacts.zip build
+        node-version: '14'
+    - run: npm install
+    - run: npm run build 
+    - run: zip -r build-artifacts.zip build
+    
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
