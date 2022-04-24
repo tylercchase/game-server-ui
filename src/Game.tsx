@@ -18,7 +18,7 @@ function GameBlock(props: { game: Game }) {
             <div className="game-status">
                 <span className={`status ${status}`}>{status}</span>
             </div>
-            <div className="game-buttons">
+            <div className="game-button">
                 {status === 'RUNNING' &&
                     <button onClick={() => handleClick(props.game.urls.stop)}>Stop</button>
                 }

@@ -9,9 +9,11 @@
   height: 100%;
 }
 .header {
-  padding: 10px;
   text-align: center;
   width: 100%;
   display: inline-block;
 
+}
+img {
+  width: 100%;
 }
