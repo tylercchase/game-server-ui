@@ -19,9 +19,10 @@ jobs:
       with:
         node-version: 14.18.2
         cache: 'npm'
-    - run: npm install
-    - run: npm run build 
-    - run: zip -r build-artifacts.zip build
+      run: |
+        npm install
+        npm run build 
+        zip -r build-artifacts.zip build
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
