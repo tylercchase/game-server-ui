@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-
+import GameBlock from './Game';
+import { Game } from './models/Game';
 function App() {
+
+  const [games, setGames] = useState<Game[]>([
+      {
+        name: 'Game 1',
+        urls: {
+          status: 'active',
+          stop: '',
+          start: ''
+        }
+      },
+      {
+        name: 'Game 2',
+        urls: {
+          status: 'stopped',
+          stop: '',
+          start: ''
+        }
+      },
+  ]);
+  useEffect(() => {
+    fetch('https://us-west1-game-management-348123.cloudfunctions.net/info').then(res => res.json()).then(data => {
+      setGames(data['games']);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1></h1>
+    <div className="games">
+      {games.map(game => <GameBlock game={game} key={game.name}/>)}
+    </div>
     </div>
   );
 }
