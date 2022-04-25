@@ -31,7 +31,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
-        body: Release ${P github.ref }} of game-server-ui
+        body: Release ${{ github.ref }} of game-server-ui
         draft: false
         prerelease: false
     
